@@ -32,6 +32,7 @@ class AuthController extends Controller
 
         $user = Auth::user();
         return response()->json([
+            'message' => 'Logged in',
             'user' => $user,
             'authorization' => [
                 'token' => $token,

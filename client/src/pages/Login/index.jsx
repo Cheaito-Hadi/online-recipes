@@ -5,6 +5,11 @@ import { useState } from "react";
 import axios from "axios";
 
 function Login() {
+
+  const [authenticated, setauthenticated] = useState(
+    localStorage.getItem(localStorage.getItem("authenticated") || false)
+  );
+
   const [credentials, setCredentials] = useState({
     email: "",
     password: "",
@@ -20,10 +25,15 @@ function Login() {
         credentials
       );
       console.log(response)
-      const message = response.data.message;
-      if (message === "Logged in") {
-        localStorage.setItem("token", response.data.authorization.token);
-        console.log("Logged")
+      if (response.status === 200) {
+        const responseData = response?.data;
+        if (responseData) {
+          setauthenticated(true)         
+          localStorage.setItem("authenticated", true);
+          localStorage.setItem("token", responseData.authorization.token);
+          console.log('logged')
+          window.location.reload(false);
+        }
       }
     } catch (error) {
         console.log('error')
@@ -50,6 +60,7 @@ function Login() {
           name="password"
           type="password"
         />
+        <p>Don't Have an account? <a href="/register" className="register-here">Register here!</a></p>
         <button className="login-btn" onClick={handleLogin}>Login</button>
       </div>
     </div>

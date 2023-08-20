@@ -10,7 +10,7 @@ class Image extends Model
     use HasFactory;
     public $timestamps = false;
 
-    public function recipe(){
+    public function images(){
         return $this->belongsTo(Recipe::class);
     }
 }

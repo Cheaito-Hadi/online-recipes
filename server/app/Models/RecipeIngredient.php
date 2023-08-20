@@ -9,13 +9,5 @@ class RecipeIngredient extends Model
 {
     use HasFactory;
     public $timestamps = false;
-
-    public function recipe()
-    {
-        return $this->belongsTo(Recipe::class);
-    }
-    public function ingredient()
-    {
-        return $this->belongsTo(Ingredient::class);
-    }
+    protected $table = 'recipe_ingredients';
 }

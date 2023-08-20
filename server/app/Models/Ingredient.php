@@ -10,7 +10,8 @@ class Ingredient extends Model
     use HasFactory;
     public $timestamps = false;
 
-    public function recipe(){
-        return $this->belongsToMany(Recipe::class)->withPivot('amount');
+    public function recipes()
+    {
+        return $this->belongsToMany(Recipe::class, 'recipe_ingredients')->withPivot('amount');
     }
 }

@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\AuthController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\RecipeController;
+use App\Http\Controllers\CommentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,3 +35,5 @@ Route::post('/create_recipe', [RecipeController::class, "createRecipe"]);
 
 Route::post('/like_recipe', [LikeController::class, "likeRecipe"]);
 Route::post('/unlike_recipe', [LikeController::class, "unlikeRecipe"]);
+
+Route::post('/add_comment', [CommentController::class, "addComment"]);

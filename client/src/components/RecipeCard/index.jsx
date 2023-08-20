@@ -5,11 +5,11 @@ import { BiSolidCommentMinus } from 'react-icons/bi';
 import { IoMdShareAlt } from 'react-icons/io';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
-import img1 from '../../assets/img1.jpg'
-import img2 from '../../assets/img2.jpeg'
-import img3 from '../../assets/img3.jpeg'
 
 function RecipeCard() {
+  const url = 'http://127.0.0.1:8000/api'
+  const imageArray = ['1','2']
+
   //bas badna njeb ingredients
   const ingredients = ['Ingredient 1', 'Ingredient 2', 'Ingredient 3', 'Ingredient 3', 'Ingredient 3', 'Ingredient 3', 'Ingredient 3', 'Ingredient 3', 'Ingredient 3', 'Ingredient 3', 'Ingredient 3', 'Ingredient 3', 'Ingredient 3', 'Ingredient 3'];
 
@@ -24,15 +24,12 @@ function RecipeCard() {
         </div>
       </div>
       <Carousel className="images-container">
+        {imageArray.map((image_id) =>(
         <div>
-          <img src={img1}alt="Imag" />
+          <img src={url+"/get_image/"+image_id} alt="Imag" />
         </div>
-        <div>
-          <img src={img2} alt="Imag" />
-        </div>
-        <div>
-          <img src={img3} alt="Imag" />
-        </div>
+        ) 
+        )}
       </Carousel>
       <h4>Cuisine: </h4>
       <div className="ingredients-list">

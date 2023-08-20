@@ -6,6 +6,7 @@ use App\Http\Controllers\API\AuthController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\RecipeController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\MealController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,3 +39,5 @@ Route::post('/unlike_recipe', [LikeController::class, "unlikeRecipe"]);
 
 Route::post('/add_comment', [CommentController::class, "addComment"]);
 Route::get('/get_comments/{id}', [CommentController::class, "getComments"]);
+
+Route::post('/add_meal', [MealController::class, "addAMeal"]);

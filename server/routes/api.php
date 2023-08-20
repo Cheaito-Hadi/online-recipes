@@ -29,3 +29,4 @@ Route::controller(AuthController::class)->group(function () {
 
 Route::get('/get_recipes', [RecipeController::class, "getAllRecipes"]);
 Route::get('/get_image/{id}', [RecipeController::class, "getRecipeImage"]);
+Route::post('/create_recipe', [RecipeController::class, "createRecipe"]);

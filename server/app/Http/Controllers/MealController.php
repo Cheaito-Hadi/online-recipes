@@ -9,7 +9,8 @@ use App\Models\Meal;
 
 class MealController extends Controller
 {
-    public function addAMeal(Request $request) {
+    public function addAMeal(Request $request)
+    {
         $user = Auth::user();
         if (is_null($user)) {
             return response()->json(["message" => 'failed']);
@@ -25,5 +26,16 @@ class MealController extends Controller
         $new_meal->save();
         return response()->json(["Schedule" => $new_meal]);
     }
-    
+
+    public function getMeals()
+    {
+        $meals = Auth::user()->meals;
+        $meals_events = $meals->map(function ($meal) {
+            return [
+                "name" => $meal->name,
+                "date" => $meal->date,
+            ];
+        });
+        return response()->json(["Schedule" => $meals_events]);
+    }
 }

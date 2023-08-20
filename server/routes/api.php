@@ -33,3 +33,4 @@ Route::get('/get_image/{id}', [RecipeController::class, "getRecipeImage"]);
 Route::post('/create_recipe', [RecipeController::class, "createRecipe"]);
 
 Route::post('/like_recipe', [LikeController::class, "likeRecipe"]);
+Route::post('/unlike_recipe', [LikeController::class, "unlikeRecipe"]);

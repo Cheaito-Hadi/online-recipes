@@ -9,9 +9,10 @@ use Illuminate\Support\Facades\Auth;
 
 class LikeController extends Controller
 {
-    public function likeRecipe(Request $request) {
+    public function likeRecipe(Request $request)
+    {
         $recipeId = intval($request->recipe_id);
-        $user = $request->user();
+        $user = Auth::user();
         if (!$user || !Recipe::find($recipeId)) {
             return response()->json([
                 "message" => "Couldn't like the post",
@@ -22,7 +23,6 @@ class LikeController extends Controller
             'recipe_id' => $recipeId,
             'user_id' => $user->id,
         ]);
-
         if (!$existingLike->wasRecentlyCreated) {
             return response()->json([
                 "message" => "You have already liked this recipe",
@@ -34,5 +34,24 @@ class LikeController extends Controller
             "status" => "success"
         ]);
     }
-    
+
+    public function unlikeRecipe(Request $request)
+    {
+        $user = Auth::user();
+        $recipeId = $request->recipe_id;
+        if (!$user || !Recipe::find($recipeId)) {
+            return response()->json([
+                "message" => "could'nt like",
+                "status" => "failed"
+            ]);
+        }
+        $existingLike = Like::where('user_id', $user->id)->where('recipe_id', $recipeId)->first();
+        if ($existingLike) {
+            $existingLike->delete();
+        }
+        return response()->json([
+            "message" => "unliked recipe",
+            "status" => "success"
+        ]);
+    }
 }

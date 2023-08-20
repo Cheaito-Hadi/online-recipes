@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Comment;
+use App\Models\Recipe;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
 class CommentController extends Controller
@@ -25,5 +27,14 @@ class CommentController extends Controller
                 'status' => 'error'
             ]);
         }
+    }
+
+    public function getComments(Request $request)
+    {
+        $recipe = Recipe::where('id', $request->id)->first();
+        foreach ($recipe->comments as $comment) {
+            $comment->user = User::where('id', $comment->user_id)->pluck('name')->first();
+        }
+        return response()->json(['comments' => $recipe->comments]);
     }
 }

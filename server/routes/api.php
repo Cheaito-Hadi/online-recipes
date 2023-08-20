@@ -37,3 +37,4 @@ Route::post('/like_recipe', [LikeController::class, "likeRecipe"]);
 Route::post('/unlike_recipe', [LikeController::class, "unlikeRecipe"]);
 
 Route::post('/add_comment', [CommentController::class, "addComment"]);
+Route::get('/get_comments/{id}', [CommentController::class, "getComments"]);

@@ -1,26 +1,33 @@
-import React from 'react'
-import './styles.css'
-import ShoppingListCard from '../../components/ShoppingListCard'
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import './styles.css';
+import ShoppingListCard from '../../components/ShoppingListCard';
 
 function ShoppingList() {
+  const [recipes, setRecipes] = useState([]);
 
-  const dummyData = [
-    {
-      recipeName: 'Chocolate Chip Cookies',
-      ingredients: ['2 cups all-purpose flour', '1 cup chocolate chips', '1/2 cup butter', '1/2 cup sugar', '1/2 cup brown sugar', '1 egg', '1 tsp vanilla extract', '1/2 tsp baking soda']
-    },
-    {
-      recipeName: 'Spaghetti Bolognese',
-      ingredients: ['1 pound ground beef', '1 onion', '2 cloves garlic', '1 can diced tomatoes', '1/2 cup tomato sauce', '1 tsp dried oregano', 'Salt and pepper to taste']
-    }
-  ];
+  useEffect(() => {
+    axios.get('http://127.0.0.1:8000/api/get_shoppinglist', {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`
+      }
+    })
+      .then(response => {
+        const recipeData = response.data.recipe_data;
+        setRecipes(recipeData);
+      })
+      .catch(error => {
+        console.error('Error fetching data:', error);
+      });
+  }, []);
+
   return (
     <div>
-    {dummyData.map((recipe, index) => (
-      <ShoppingListCard key={index} item={recipe} />
-    ))}
-  </div>
-  )
+      {recipes.map((recipe, index) => (
+        <ShoppingListCard key={index} item={recipe} />
+      ))}
+    </div>
+  );
 }
 
-export default ShoppingList
+export default ShoppingList;

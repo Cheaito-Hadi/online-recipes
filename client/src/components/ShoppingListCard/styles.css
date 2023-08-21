@@ -1,0 +1,23 @@
+.recipe-card {
+    border: 1px solid #ccc;
+    padding: 16px;
+    margin: 16px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+  }
+  
+  .recipe-name {
+    font-size: 24px;
+    margin-bottom: 8px;
+  }
+  
+  .ingredient-list {
+    list-style-type: disc;
+    padding-left: 20px;
+  }
+  
+  .ingredient-list li {
+    margin-bottom: 4px;
+  }
+  

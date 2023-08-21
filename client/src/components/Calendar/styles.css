@@ -1,0 +1,8 @@
+.add-meal{
+    position: absolute;
+    top: 80px;
+    right: 40%;
+    display: flex;
+    gap: 10px;
+
+}

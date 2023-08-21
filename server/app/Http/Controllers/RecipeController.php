@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\Recipe;
 use App\Models\Ingredient;
 use App\Models\RecipeIngredient;
+use Illuminate\Support\Facades\Auth;
 
 class RecipeController extends Controller
 {
@@ -34,7 +35,7 @@ class RecipeController extends Controller
     public function createRecipe(Request $request)
     {
         $new_recipe = new Recipe;
-        $new_recipe->user_id = $request->user_id;
+        $new_recipe->user_id = Auth::id();
         $cuisine = Cuisine::where('name', $request->cuisine)->first();
         if (is_null($cuisine)) {
             $cuisine = new Cuisine;
@@ -62,11 +63,10 @@ class RecipeController extends Controller
                 } catch (\Throwable $e) {
                     return response()->json(['status' => 'failed']);
                 }
-              
             }
             foreach($request->image_path as $recipe_image ){
             $recipe_image_db = new Image;
-            $file_name = time()."recipe_image".".".$recipe_image->extension();
+            $file_name = time() . "_recipe_image_" . uniqid() . "." . $recipe_image->extension();
             $recipe_image->move(storage_path('images'),$file_name);
             $recipe_image_db->recipe_id =$new_recipe->id;
             $recipe_image_db->image_path = storage_path("images")."\\".$file_name;

@@ -16,6 +16,6 @@ class ShoppingList extends Model
     }
     public function items()
     {
-        return $this->hasMany(Lists::class);
+        return $this->hasMany(Lists::class, "shopping_id");
     }
 }

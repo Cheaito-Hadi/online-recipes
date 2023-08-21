@@ -7,6 +7,7 @@ use App\Http\Controllers\LikeController;
 use App\Http\Controllers\RecipeController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\MealController;
+use App\Http\Controllers\ShoppingListController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,3 +43,5 @@ Route::get('/get_comments/{id}', [CommentController::class, "getComments"]);
 
 Route::post('/add_meal', [MealController::class, "addAMeal"]);
 Route::get('/get_meals', [MealController::class, "getMeals"]);
+
+Route::post('/create_shoppinglist', [ShoppingListController::class, "createShoppingList"]);

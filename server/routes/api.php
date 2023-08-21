@@ -45,3 +45,4 @@ Route::post('/add_meal', [MealController::class, "addAMeal"]);
 Route::get('/get_meals', [MealController::class, "getMeals"]);
 
 Route::post('/create_shoppinglist', [ShoppingListController::class, "createShoppingList"]);
+Route::get('/get_shoppinglist', [ShoppingListController::class, "getShoppingList"]);

@@ -32,4 +32,18 @@ class ShoppingListController extends Controller
         $new_list_item->save();
         return response()->json(['message' => 'Created Shopping List']);
     }
+
+    public function getShoppingList()
+    {
+        $user = Auth::user();
+        $shoppingList = $user->shoppingLists->first()->items;
+        foreach($shoppingList as $list){
+            $recipe= $list->recipe;
+            $recipe->ingredients;
+        }
+        return response()->json([
+            'message' => 'success',
+            'recipe_data' => $shoppingList
+        ]);
+    }
 }

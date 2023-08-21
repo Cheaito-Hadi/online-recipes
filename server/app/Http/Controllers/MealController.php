@@ -29,13 +29,16 @@ class MealController extends Controller
 
     public function getMeals()
     {
-        $meals = Auth::user()->meals;
-        $meals_events = $meals->map(function ($meal) {
-            return [
-                "name" => $meal->name,
-                "date" => $meal->date,
-            ];
-        });
-        return response()->json(["Schedule" => $meals_events]);
+     $user = Auth::user();
+    if (!$user->meals) {
+        return response()->json(['message' => 'No meals available']);
+    }
+    $meals_events = $user->meals->map(function ($meal) {
+        return [
+            "name" => $meal->name,
+            "date" => $meal->date,
+        ];
+    });
+    return response()->json(["Schedule" => $meals_events]);
     }
 }

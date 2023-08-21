@@ -15,7 +15,6 @@ function Navbar() {
       </div>
       <ul>
         <a href="/">Home</a>
-        <a href="/create-recipe">Create Recipe</a>
         <a href="/shopping-list">Shopping List</a>
         <a href="/plan-meal">Plan Meals</a>
         <a href="/" onClick={handleLogout}>Logout</a>

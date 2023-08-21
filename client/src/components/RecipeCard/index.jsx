@@ -1,12 +1,21 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { AiFillHeart } from 'react-icons/ai';
 import { BiSolidCommentMinus } from 'react-icons/bi';
 import { IoMdShareAlt } from 'react-icons/io';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import './styles.css'
+import CommentModal from '../../components/CommentModal'
 
 function RecipeCard({ recipe }) {
+  const [isCommentModalOpen, setIsCommentModalOpen] = useState(false);
+    const openModal = () => {
+        setIsCommentModalOpen(true);
+    };
+
+    const closeModal = () => {
+        setIsCommentModalOpen(false);
+    };
   const url = 'http://127.0.0.1:8000/api';
    
   return (
@@ -15,10 +24,13 @@ function RecipeCard({ recipe }) {
         <h3 className="title">{recipe.name}</h3>
         <div className="icons-container">
           <AiFillHeart /> {recipe.likes_count}
-          <BiSolidCommentMinus /> {recipe.comments_count}
+          <a onClick={openModal}><BiSolidCommentMinus /> {recipe.comments_count}</a>
           <IoMdShareAlt />
         </div>
       </div>
+      {isCommentModalOpen && (
+              <CommentModal closeModal={closeModal} recipeId={recipe.id}/>
+          )}
       <Carousel className="images-container">
         {recipe.images.map((image) => (
           <div key={image.id}>

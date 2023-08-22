@@ -1,7 +1,12 @@
+import {
+  FacebookShareButton,
+  FacebookIcon,
+  WhatsappShareButton,
+  WhatsappIcon
+} from "react-share";
 import React, { useState } from "react";
 import { AiFillHeart } from "react-icons/ai";
 import { BiSolidCommentMinus } from "react-icons/bi";
-import { IoMdShareAlt } from "react-icons/io";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import "./styles.css";
@@ -58,6 +63,7 @@ function RecipeCard({ recipe }) {
     setLikesCount(!like ? likesCount + 1 : likesCount - 1);
   };
 
+  const shareUrl = "https://github.com/Cheaito-Hadi";
   return (
     <div className="card-container">
       <div className="title-container">
@@ -73,7 +79,16 @@ function RecipeCard({ recipe }) {
           <a onClick={openModal}>
             <BiSolidCommentMinus /> {recipe.comments_count}
           </a>
-          <IoMdShareAlt />
+          <FacebookShareButton url={shareUrl}>
+            <FacebookIcon size={20} round={true} />
+          </FacebookShareButton>
+          <WhatsappShareButton
+            url={shareUrl}
+            quote={"Title or jo bhi aapko likhna ho"}
+            hashtag={"#portfolio..."}
+          >
+            <WhatsappIcon size={20} round={true} />
+          </WhatsappShareButton>
         </div>
       </div>
       {isCommentModalOpen && (

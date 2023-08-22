@@ -10,6 +10,8 @@ import axios from "axios";
 
 function RecipeCard({ recipe }) {
   const [isCommentModalOpen, setIsCommentModalOpen] = useState(false);
+  const [like, setLike] = useState(recipe.is_liked);
+  const [likesCount, setLikesCount] = useState(recipe.likes_count);
   const openModal = () => {
     setIsCommentModalOpen(true);
   };
@@ -34,13 +36,40 @@ function RecipeCard({ recipe }) {
       console.error("Error adding to list:", error);
     }
   };
+  const handleLikes = async () => {
+    try {
+      await axios.post(
+        `${url}${like ? "/unlike_recipe" : "/like_recipe"}`,
+        { recipe_id: recipe.id },
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const likeHandler = () => {
+    handleLikes();
+    setLike(like ? false : true);
+    setLikesCount(!like ? likesCount + 1 : likesCount - 1);
+  };
 
   return (
     <div className="card-container">
       <div className="title-container">
         <h3 className="title">{recipe.name}</h3>
         <div className="icons-container">
-          <AiFillHeart /> {recipe.likes_count}
+          <AiFillHeart
+            onClick={(e) => {
+              e.stopPropagation();
+              likeHandler();
+            }}
+          />{" "}
+          {likesCount}
           <a onClick={openModal}>
             <BiSolidCommentMinus /> {recipe.comments_count}
           </a>

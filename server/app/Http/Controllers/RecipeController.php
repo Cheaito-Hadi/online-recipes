@@ -16,7 +16,9 @@ class RecipeController extends Controller
     public function getAllRecipes()
     {
         $recipes = Recipe::with(['ingredients', 'cuisine', 'likes', 'comments', 'images'])->withCount(['likes', 'comments'])->get();
-
+        foreach($recipes as $recipe){
+            $recipe->is_liked = $recipe->likes->contains('user_id', Auth::id());
+        }
         return response()->json([
             'message' => 'success',
             'recipe_data' => $recipes

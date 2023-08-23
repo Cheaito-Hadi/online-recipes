@@ -1,5 +1,38 @@
-.comments-container{
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
+.comment-label{
+    margin-right: 350px;
+}
+
+.comments-container {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 20px 0;
+    background-color: #ffbe62;
+    border-radius: 5px;
+    text-align: left;
+    max-height: 450px;
+    overflow: auto;
+}
+
+.comments-container > div {
+    margin-bottom: 15px;
+    padding: 10px;
+    background-color: #ffecd1;
+    border-radius: 5px;
+    text-align: left;
+}
+
+.comments-container p {
+    margin: 0;
+    text-align: left;
+}
+
+.comments-container p:first-child {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.comments-container p:last-child {
+    color: #333;
+    margin-bottom: 5px;
+    text-align: left;
 }

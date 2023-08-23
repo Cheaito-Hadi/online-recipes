@@ -68,7 +68,7 @@ function RecipeCard({recipe}) {
         <div className="card-container">
             <div>
                 <div className="title-container">
-                    <h2 className="title">{recipe.name}</h2>
+                    <h2 className="title-recipe-name">{recipe.name}</h2>
                     <div className="icon-container">
                         <AiFillHeart
                             className={`icon ${like ? "icon-liked" : "icon-unliked"}`}

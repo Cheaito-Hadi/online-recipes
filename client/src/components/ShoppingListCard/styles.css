@@ -4,9 +4,13 @@
     margin: 16px;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    background-color: #fff;
+    background-color: #FFBE62;
+    transition: box-shadow 0.3s ease;
+    width: 500px;
   }
-  
+.recipe-card:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
   .recipe-name {
     font-size: 24px;
     margin-bottom: 8px;

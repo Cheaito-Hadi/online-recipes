@@ -14,20 +14,50 @@
 .modal-content {
     background-color: #fff;
     border-radius: 5px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     padding: 20px;
     max-width: 500px;
     width: 90%;
     text-align: center;
 }
 
+.input-main{
+    border-color:#fb9300 ;
+    margin-top: 5px;
+}
+
+.ingredient-amount{
+    display: flex;
+    gap: 10px;
+}
+
+.ingredient-amount-inputs{
+    height: 30px;
+    border-radius: 5px;
+    border-color:#fb9300 ;
+}
+
+.brr{
+    max-height: 200px;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.remove-btn{
+    background-color: #fb9300;
+    color: white ;
+    border: none;
+    border-radius: 10px;
+}
 
 .send-button {
-    background-color: #007bff;
-    color: #fff;
+    background-color: #fb9300;
+    color: white ;
     border: none;
     padding: 10px 20px;
-    border-radius: 3px;
+    border-radius: 10px;
     cursor: pointer;
     transition: background-color 0.3s ease;
     margin-right: 10px;
@@ -35,18 +65,41 @@
 }
 
 .send-button:hover {
-    background-color: #0056b3;
+    background-color: #0068FB;
+    color: white;
+}
+
+.add-more{
+    background-color: #fb9300;
+    color: white ;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 10px;
 }
 
 .modal-close-button {
     background-color: #bfbfbf;
     color: #fff;
     border: none;
-    padding: 10px 20px;
-    border-radius: 3px;
+    margin-top: 5px;
+    padding: 10px 20px 25px;
+    border-radius: 10px;
     cursor: pointer;
     transition: background-color 0.3s ease;
     width: 20%;
+}
+.modal-close-button:hover{
+    background-color: #aaaaaa;
+}
+
+.add-image-btn{
+    background-color: #fb9300;
+    color: white ;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
 }
 
 .modal-img-container {
@@ -64,7 +117,7 @@
 }
 
 .img-pic {
-    background-color: #F5DEB3;
+    background-color: white;
     padding: 0 10px;
     height: 100px;
     width: 100px;

@@ -75,33 +75,40 @@ function CreateRecipeModal({closeModal}) {
     return (<div className="modal-overlay">
             <div className="modal-content">
                 <label>Recipe Name:</label>
-                <input className="input-main" placeholder="Enter Name" value={recipeValue} onChange={handleRecipeChange}
+                <input className="input-main" placeholder="Recipe name" value={recipeValue} onChange={handleRecipeChange}
                        type="text"/>
                 <label>Cuisine Name:</label>
-                <input className="input-main" placeholder="Enter Name" value={cuisineValue}
+                <input className="input-main" placeholder="Cuisine Name" value={cuisineValue}
                        onChange={handleCuisineChange}
                        type="text"/>
+
                 <label>Ingredients: </label>
+                <div className="brr">
                 {ingredientFields.map((form, index) => {
-                    return (<div key={index}>
-                            <input
+                    return (<div key={index} className="ingredient-amount">
+
+                        <input
+                                className="ingredient-amount-inputs"
                                 name='name'
-                                placeholder='Enter Name'
+                                placeholder='Enter ingredient'
                                 onChange={event => handleFormChange(event, index)}
                                 value={form.name}
                             />
                             <input
+                                className="ingredient-amount-inputs"
                                 name='amount'
                                 placeholder='Enter Amount'
                                 onChange={event => handleFormChange(event, index)}
                                 value={form.amount}
                             />
-                            <button onClick={() => removeFields(index)}>Remove</button>
-                        </div>);
+                            <button className="remove-btn" onClick={() => removeFields(index)}>Remove</button>
+                    </div>);
                 })}
-                <button onClick={addFields}>Add More..</button>
+                </div>
+                <button  className="add-more" onClick={addFields}>Add More..</button>
                 <div className="modal-img-container">
                     <input
+                        className="add-image-btn"
                         id="inp"
                         type="file"
                         accept="image/*"

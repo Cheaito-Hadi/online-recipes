@@ -47,7 +47,7 @@ function Login() {
       <AnimatedIntro/>
       </div>
       <div className="login-box">
-        <img src={Logo} className="logo-image"/>
+        <img src={Logo} className="logo-image" alt="img loading"/>
         <h2 className="login-heading">Login</h2>
         <Input
           label="Email:"

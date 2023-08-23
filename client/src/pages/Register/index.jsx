@@ -2,7 +2,8 @@ import React from "react";
 import "./styles.css";
 import Input from "../../components/Input";
 import { useState } from "react";
-import axios from "axios";
+import axios from "axios";import Logo from '../../assets/Logo.svg';
+import AnimatedIntro from "../../components/AnimatedIntro";
 
 function Register() {
   const [authenticated, setauthenticated] = useState(
@@ -41,7 +42,11 @@ function Register() {
   };
   return (
     <div className="container">
+      <div>
+        <AnimatedIntro/>
+      </div>
       <div className="inputs-wrapper">
+        <img src={Logo} className="logo-image" alt="img loading"/>
         <h2 className="signup-heading">Register</h2>
         <Input
           label="Full name"
@@ -67,6 +72,7 @@ function Register() {
           onChange={handleDataChange}
           type="password"
         />
+        <a href="/" className="register-here">Go back to login</a>
         <button className="signup-btn" onClick={submitUser}>
           Sign Up
         </button>

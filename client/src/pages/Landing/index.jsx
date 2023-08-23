@@ -21,7 +21,11 @@
         useEffect(() => {
             async function fetchRecipeData() {
                 try {
-                    const response = await axios.get(url + '/get_recipes');
+                    const response = await axios.get(url + '/get_recipes', {
+                        headers: {
+                            Authorization: `Bearer ${localStorage.getItem("token")}`,
+                        },
+                    });
                     if (response.data.message === 'success') {
                         setRecipeData(response.data.recipe_data);
                         setOriginalRecipeData(response.data.recipe_data);

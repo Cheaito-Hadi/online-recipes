@@ -23,6 +23,7 @@ class LikeController extends Controller
             'recipe_id' => $recipeId,
             'user_id' => $user->id,
         ]);
+        $existingLike->save();
         if (!$existingLike->wasRecentlyCreated) {
             return response()->json([
                 "message" => "You have already liked this recipe",

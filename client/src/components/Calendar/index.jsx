@@ -50,9 +50,9 @@ function Calendar() {
     return (
         <div className='calendar-container'>
             <div className="add-meal">
-                Meal Name: <input placeholder="Enter your meal here" value={mealName} onChange={e => setMealName(e.target.value)} />
+                Meal Name: <input className="calendar-meal-inout" placeholder="Enter your meal here" value={mealName} onChange={e => setMealName(e.target.value)} />
                 Enter the date: <input type="date" value={mealDate} onChange={e => setMealDate(e.target.value)} />
-                <button onClick={addMeal}>Add Meal</button>
+                <button className="add-meal-btn" onClick={addMeal}>Add Meal</button>
             </div>
             <FullCalendar
                 plugins={[dayGridPlugin]}

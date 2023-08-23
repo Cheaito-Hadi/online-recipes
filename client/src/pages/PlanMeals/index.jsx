@@ -4,7 +4,9 @@ import Calendar from '../../components/Calendar'
 
 function PlanMeal() {
   return (
+      <div className="calendar-page-container">
     <Calendar/>
+      </div>
   )
 }
 

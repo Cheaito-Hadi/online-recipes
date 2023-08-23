@@ -1,8 +1,38 @@
 .add-meal{
     position: absolute;
-    top: 80px;
-    right: 40%;
+    top: 110px;
+    right: 30%;
     display: flex;
     gap: 10px;
+}
 
+.calendar-meal-inout{
+    height: 20px;
+    border-radius: 5px;
+}
+
+.add-meal-btn{
+    color: white;
+    background-color: #fb9300;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+
+}
+.calendar-container {
+    width: 80%;
+    height: 90%;
+    margin: auto auto 50px;
+}
+
+.fc-event {
+    background-color: #fb9300;
+    color: #fff;
+    border: none;
+    height: 20px;
+    max-height: 100px;
+}
+
+.fc-event:hover {
+    background-color: #0068FB;
 }

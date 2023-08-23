@@ -3,6 +3,8 @@ import "./styles.css";
 import Input from "../../components/Input";
 import { useState } from "react";
 import axios from "axios";
+import Logo from '../../assets/Logo.svg';
+import AnimatedIntro from "../../components/AnimatedIntro";
 
 function Login() {
 
@@ -31,7 +33,6 @@ function Login() {
           setauthenticated(true)         
           localStorage.setItem("authenticated", true);
           localStorage.setItem("token", responseData.authorization.token);
-          console.log('logged')
           window.location.reload(false);
         }
       }
@@ -42,7 +43,11 @@ function Login() {
   };
   return (
     <div className="container">
+      <div>
+      <AnimatedIntro/>
+      </div>
       <div className="login-box">
+        <img src={Logo} className="logo-image"/>
         <h2 className="login-heading">Login</h2>
         <Input
           label="Email:"
